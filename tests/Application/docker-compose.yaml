@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+    database:
+        image: 'mariadb:latest'
+        container_name: pag_online_imprese_db
+        environment:
+            MYSQL_ROOT_PASSWORD: pag_online_imprese
+            MYSQL_DATABASE: pag_online_imprese
+        ports:
+            - '3399:3306'

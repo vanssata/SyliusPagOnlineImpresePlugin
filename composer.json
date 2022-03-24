@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3",
         "sylius/sylius": "~1.8.0"
+
     },
     "require-dev": {
         "behat/behat": "^3.6.1",
@@ -39,7 +40,8 @@
         "symfony/intl": "^4.4 || ^5.0",
         "symfony/web-profiler-bundle": "^4.4 || ^5.0",
         "symfony/web-server-bundle": "^4.4 || ^5.0",
-        "vimeo/psalm": "4.4.1"
+        "vimeo/psalm": "4.4.1",
+        "symfony/maker-bundle": "^1.38"
     },
     "config": {
         "sort-packages": true
@@ -69,6 +71,17 @@
         ],
         "post-create-project-cmd": [
             "php bin/create_node_symlink.php"
+        ],
+        "assets": [
+          "(cd tests/Application && yarn build)",
+          "(cd tests/Application && APP_ENV=dev symfony console assets:install public)"
+        ],
+        "init-db": [
+          "(cd tests/Application && APP_ENV=dev symfony console doctrine:schema:create)",
+          "(cd tests/Application && APP_ENV=dev symfony console sylius:fixtures:load)"
+        ],
+        "run-project": [
+          "(APP_ENV=dev symfony  serve --dir='tests/Application/public' -d )"
         ]
     }
 }
