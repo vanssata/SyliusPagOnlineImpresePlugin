@@ -1,16 +1,16 @@
 {
-    "name": "sylius/plugin-skeleton",
+    "name": "vanssata/sylius-pag-online-imprese-plugin",
     "type": "sylius-plugin",
-    "description": "Acme example plugin for Sylius.",
-    "keywords": [
-        "sylius",
-        "sylius-plugin"
+    "authors": [
+      { "name": "vanssata ", "email": "ivan.kakurov@gmail.com" }
     ],
+    "description": "Plugin that enable UniCredit Bulbank PagOnline Imprese payment provider",
+    "keywords": ["sylius", "sylius-plugin", "UniCredit","UniCredit Bulbank","PagOnline Imprese", "payum","payment provider"],
     "license": "MIT",
     "require": {
         "php": "^7.3",
+        "vanssata/vanssata-pag-online-sdk": "^0.0",
         "sylius/sylius": "~1.8.0"
-
     },
     "require-dev": {
         "behat/behat": "^3.6.1",
@@ -53,8 +53,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Acme\\SyliusExamplePlugin\\": "src/",
-            "Tests\\Acme\\SyliusExamplePlugin\\": "tests/"
+            "Vanssata\\SyliusPagOnlineImpresePlugin\\": "src/",
+            "Tests\\Vanssata\\SyliusPagOnlineImpresePlugin\\": "tests/"
         }
     },
     "autoload-dev": {
@@ -81,7 +81,9 @@
           "(cd tests/Application && APP_ENV=dev symfony console sylius:fixtures:load)"
         ],
         "run-project": [
-          "(APP_ENV=dev symfony  serve --dir='tests/Application/public' -d )"
+            "docker stop $(docker ps -qa)",
+            "(cd tests/Application && docker-compose up -d --remove-orphans --build )",
+            "(APP_ENV=dev symfony  serve --dir='tests/Application/public' -d )"
         ]
     }
 }

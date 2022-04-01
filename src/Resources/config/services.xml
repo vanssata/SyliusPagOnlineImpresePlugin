@@ -2,6 +2,27 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <!-- Put your services here -->
+        <service id="vanssata.pag_online_imprese.payment_state_applicator" class="Vanssata\SyliusPagOnlineImpresePlugin\StateMachine\PaymentStateApplicator" public="true">
+            <argument type="service" id="sm.factory" key="$smFactory"/>
+        </service>
+
+        <service id="vanssata.pag_online_imprese.gataway.builder" class="Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder">
+            <argument>Vanssata\SyliusPagOnlineImpresePlugin\Payum\SyliusPagOnlineImpreseFactory</argument>
+            <tag name="payum.gateway_factory_builder" factory="sylius_payment" />
+        </service>
+
+        <service id="Vanssata\SyliusPagOnlineImpresePlugin\Form\Type\PagOnlineImpreseGatewayConfigurationType">
+            <tag name="sylius.gateway_configuration_type" type="sylius_payment" label="UniCredit Bulbank PagOnline" />
+            <tag name="form.type" />
+        </service>
+        <service id="pag_online_imprese_bridge" class="Vanssata\SyliusPagOnlineImpresePlugin\Bridge\PagOnlineImpreseBridge" />
+
+        <service id="Vanssata\SyliusPagOnlineImpresePlugin\Payum\Action\CaptureAction" public="true" >
+            <argument type="service" id="pag_online_imprese_bridge" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="payum.action" factory="sylius_payment" alias="payum.action.capture" />
+        </service>
+
+
     </services>
 </container>
