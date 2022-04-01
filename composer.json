@@ -9,7 +9,7 @@
     "license": "MIT",
     "version": "1.0.8",
     "require": {
-        "php": "^7.3",
+        "php": ">=7.3",
         "vanssata/vanssata-pag-online-sdk": "^0.0",
         "sylius/sylius": "^1.8"
     },
