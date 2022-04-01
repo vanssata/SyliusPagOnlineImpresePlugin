@@ -88,7 +88,6 @@ class PagOnlineImpreseBridge implements PagOnlineImpreseBridgeInterface
         $this->getIgfsCgInit()->amount = $payment->getAmount(); //Amount without comma, 1,00EUR will be 100
         $this->getIgfsCgInit()->shopUserName = $payment->getOrder()->getCustomer()->getFirstName();
         $this->getIgfsCgInit()->shopUserAccount = $payment->getOrder()->getCustomer()->getEmailCanonical();
-        $this->getIgfsCgInit()->shopUserMobilePhone = $payment->getOrder()->getBillingAddress()->getPhoneNumber();
         $this->getIgfsCgInit()->paymentID = $payment->getOrder()->getNumber();
 
         $this->getIgfsCgInit()->addInfo1 = sprintf("Paid for transaction whit id %s", $payment->getId());

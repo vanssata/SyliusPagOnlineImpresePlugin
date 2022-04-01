@@ -16,7 +16,6 @@ use Payum\Core\Request\GetStatusInterface;
 use Sylius\Bundle\PayumBundle\Request\GetStatus;
 use Sylius\Component\Core\Model\Payment;
 use Sylius\Component\Core\Model\PaymentInterface as SyliusPaymentInterface;
-use Sylius\Component\Payment\Model\PaymentInterface;
 use Vanssata\SyliusPagOnlineImpresePlugin\Bridge\PagOnlineImpreseBridge;
 use Vanssata\SyliusPagOnlineImpresePlugin\Bridge\PagOnlineImpreseBridgeInterface;
 use Vanssata\SyliusPagOnlineImpresePlugin\Payum\PagOnlineImpreseApi;
