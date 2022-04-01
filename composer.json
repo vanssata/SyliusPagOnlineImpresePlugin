@@ -7,7 +7,7 @@
     "description": "Plugin that enable UniCredit Bulbank PagOnline Imprese payment provider",
     "keywords": ["sylius", "sylius-plugin", "UniCredit","UniCredit Bulbank","PagOnline Imprese", "payum","payment provider"],
     "license": "MIT",
-    "version": "1.0.9",
+    "version": "1.0.8",
     "require": {
         "php": ">=7.3",
         "vanssata/vanssata-pag-online-sdk": "^0.0",
